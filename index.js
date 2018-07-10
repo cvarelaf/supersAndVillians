@@ -11,7 +11,7 @@ function init() {
 	console.log('App running!');
 	//1. Declare variables
 	var dataManager = new DataManager();
-	var navManager = new NavManager(dataManager);;
+	var navManager = new NavManager(dataManager);
 
 	//2. Initialize variables
 
@@ -22,8 +22,8 @@ function init() {
 
 	function getHeroesCallback(e) {
 		var request = e.target;
-		if (request.readyState == XMLHttpRequest.DONE) {
-			if (request.status == 200) {
+		if (request.readyState === XMLHttpRequest.DONE) {
+			if (request.status === 200) {
 				//Como pueden ver en la consola aqui se imprime el 
 				//json con los datos. Deben parseralo y utilizarlos para
 				//mostrar en pantalla la info.
@@ -41,19 +41,19 @@ function init() {
 
 	function getVillainsCallback(e) {
 		var request = e.target;
-		if (request.readyState == XMLHttpRequest.DONE) {
-			if (request.status == 200) {
-
+		if (request.readyState === XMLHttpRequest.DONE) {
+			if (request.status === 200) {
+				
 				var data = JSON.parse(request.responseText);
 				console.log(data);
-
+				
 				for (var key in data) {
 					var villainData = data;
-					var membersData = villainData.members;
+					var memberData = villainData.members;
 
-					var members = new Members(membersData.name, membersData.age, membersData.secretIdentity);
+					var member = new Members(memberData.name, memberData.age, memberData.secretIdentity);
 
-					var villain = new Villains (villainData.squadName, villainData.homeTown, villainData.formed, villainData.secretBase, villainData.active, new Members (membersData.name, membersData.age, membersData.secretIdentity));
+					var villain = new Villains(villainData.squadName, villainData.homeTown, villainData.formed, villainData.secretBase, villainData.active, new Members(memberData.name, memberData.age, memberData.secretIdentity));
 
 					dataManager.villains.push(villain);
 					console.log(villain);

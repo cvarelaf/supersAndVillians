@@ -5,7 +5,7 @@ class DataManager{
         this.currentVillain = null;
     }
 
-    setCurrentVillain(villains){
+    setCurrentVillain(villain){
         this.currentVillain = villain;
         console.log('Test'+ this.currentVillain);
     }

@@ -4,6 +4,5 @@ class Members {
 		this.name = name;
 		this.age = age;
 		this.secretIdentity = secretIdentity;
-        this.powers = [];
 	}
 }
