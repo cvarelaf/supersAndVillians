@@ -1,1 +1,52 @@
 /* Add your amazing style here! */
+    body {
+        font-family: 'montserrat';
+        background-image: url(img/supersAndVillainsbg.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    h1{
+        color: white;
+        text-align: center;
+    }
+
+    p{
+        font-size: 10px;
+    }
+
+    .heroesComponent{
+        display: inline-block;
+        background-color: white;
+        width:350px;
+        position: absolute;
+        margin: auto;
+        right: 0;
+        left: 0;
+        padding-bottom: 25px;
+        margin-top: 150px;
+        text-align: center;
+        border: 2px solid green;
+        border-radius: 8px;
+    }
+
+    .villainsComponent{
+        display: inline-block;
+        background-color: white;
+        width:350px;
+        height: 250px;
+        position: absolute;
+        margin: auto;
+        right: 0;
+        left: 0;
+        padding-bottom: 25px;
+        text-align: center;
+        border: 2px solid red;
+        border-radius: 8px;
+    }
+
+    .villainsInfoComponent{
+        display: none;
+    }

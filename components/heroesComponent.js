@@ -1,8 +1,8 @@
-class VillainsComponent extends Component{
+class HeroesComponent extends Component{
 
     constructor(model,parent, dataManager){
         super(model, parent, dataManager);
-        this.container.className = 'villainsComponent';
+        this.container.className = 'heroesComponent';
 
         //Add all component elements
         this.title = document.createElement('h2');
@@ -32,20 +32,20 @@ class VillainsComponent extends Component{
         
         this.membersBtn.innerHTML = 'MEMBERS';
 
-        this.membersBtn.onclick = this.VillainMembersBtnClick.bind(this);
+        this.membersBtn.onclick = this.HeroMembersBtnClick.bind(this);
         
-        this.container.villain = this.model;
+        //this.container.heroe = this.model;
     }
 
-    VillainMembersBtnClick(e){
-        var villainsComponent = document.getElementById("villainsComponent");
-        var villainsInfoComponent = document.getElementById("villainsComponent").innerHTML = "Member Information!";
-        if( villainsInfoComponent.style.display == "none" ){
-            villainsComponent.style.display = "none";
-            villainsInfoComponent.style.display = "block";
+    HeroMembersBtnClick(e){
+        var heroesComponent = document.getElementById("heroesComponent");
+        var heroesInfoComponent = document.getElementById("heroesComponent").innerHTML = "Member Information!";
+        if( heroesInfoComponent.style.display == "none" ){
+            heroesComponent.style.display = "none";
+            heroesInfoComponent.style.display = "block";
         }else{
-            villainsComponent.style.display = "block";
-            villainsInfoComponent.style.display = "none";
+            heroesComponent.style.display = "block";
+            heroesInfoComponent.style.display = "none";
         }
     }
 }

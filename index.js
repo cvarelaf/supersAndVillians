@@ -24,10 +24,26 @@ function init() {
 		var request = e.target;
 		if (request.readyState === XMLHttpRequest.DONE) {
 			if (request.status === 200) {
-				//Como pueden ver en la consola aqui se imprime el 
-				//json con los datos. Deben parseralo y utilizarlos para
-				//mostrar en pantalla la info.
-				//console.log(JSON.parse(request.responseText));
+				
+				var data = JSON.parse(request.responseText);
+				console.log(data);
+				
+				for (var key in data) {
+					var heroeData = data;
+					var memberData = heroeData.members;
+
+					var member = new Members(memberData.name, memberData.age, memberData.secretIdentity);
+
+					var heroe = new Heroes(heroeData.squadName, heroeData.homeTown, heroeData.formed, heroeData.secretBase, heroeData.active, new Members(memberData.name, memberData.age, memberData.secretIdentity));
+
+					dataManager.heroes.push(heroe);
+					console.log(heroeData);
+				}
+
+				navManager.showHeroes();
+			}
+			else {
+				console.log('Server Error');
 			}
 		}
 	}
