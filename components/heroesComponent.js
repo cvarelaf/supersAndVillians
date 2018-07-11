@@ -1,8 +1,11 @@
-class HeroesComponent extends Component{
+class HeroesComponent extends Component {
 
-    constructor(model,parent, dataManager){
+    constructor(model, parent, dataManager) {
         super(model, parent, dataManager);
-        this.container.className = 'heroesComponent';
+        /**
+         * Mejor solo aplicarle la clase al container principal.
+         */
+        // this.container.className = 'heroesComponent';
 
         //Add all component elements
         this.title = document.createElement('h2');
@@ -29,23 +32,47 @@ class HeroesComponent extends Component{
         this.secretBase.innerHTML = 'Secret Base: ' + this.model.secretBase;
         this.active.innerHTML = 'Active: ' + this.model.active;
         this.members.innerHTML = 'Members: ' + this.model.members.lenght;
-        
+
         this.membersBtn.innerHTML = 'MEMBERS';
 
         this.membersBtn.onclick = this.HeroMembersBtnClick.bind(this);
-        
+
         //this.container.heroe = this.model;
     }
 
-    HeroMembersBtnClick(e){
+    HeroMembersBtnClick(e) {
+        /**
+         * Aqui no entiendo que tratabas de hacer, supongo que querias 
+         * borrar lo que tenia el div heroesComponent y poner los members.
+         * en tal caso esi es como deberia de ser, en lugar, en lugar de
+         * borrar lo que tiene el div agregar otro componente para cada 
+         * miembro y mostrarlo abajo de la data el squad.
+         */
+        /*
         var heroesComponent = document.getElementById("heroesComponent");
         var heroesInfoComponent = document.getElementById("heroesComponent").innerHTML = "Member Information!";
-        if( heroesInfoComponent.style.display == "none" ){
+        if (heroesInfoComponent.style.display == "none") {
             heroesComponent.style.display = "none";
             heroesInfoComponent.style.display = "block";
-        }else{
+        } else {
             heroesComponent.style.display = "block";
             heroesInfoComponent.style.display = "none";
         }
+        */
+
+        /**
+         * Como puedes ver el este forEach recorre la lista de members
+         * del model (squad), y agrega al container un p con el nombre de
+         * cada uno, algo de cuidar es que cada ves que se hace click
+         * volver a crear otros elementos p. 
+         * Aqui es donde te decia que hay que crear un componente
+         * apropiado para el member y agregarlo a container.
+         */
+        this.model.members.forEach(member => {
+            console.log(member);
+            var name = document.createElement('p');
+            name.innerHTML = member.name;
+            this.container.appendChild(name);
+        });
     }
 }

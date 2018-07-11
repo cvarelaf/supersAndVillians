@@ -24,22 +24,51 @@ function init() {
 		var request = e.target;
 		if (request.readyState === XMLHttpRequest.DONE) {
 			if (request.status === 200) {
-				
-				var data = JSON.parse(request.responseText);
-				console.log(data);
-				
-				for (var key in data) {
-					var heroeData = data;
-					var memberData = heroeData.members;
 
-					var member = new Members(memberData.name, memberData.age, memberData.secretIdentity);
+				/**
+				 * En el objeto data tiene toda la informacion 
+				 * del cuartel de los heores, alli hay un arreglo 
+				 * de members. como lo tenias, el for corria por cada at
+				 * atributo en el objeto data y por eso no te mostraba
+				 * bien las cosas en pantalla.
+				 */
+				var squadData = JSON.parse(request.responseText);;
+				var squad = new Squad(squadData.squadName, squadData.homeTown, squadData.formed, squadData.secretBase, squadData.active);
+				console.log(squadData);
 
-					var heroe = new Heroes(heroeData.squadName, heroeData.homeTown, heroeData.formed, heroeData.secretBase, heroeData.active, new Members(memberData.name, memberData.age, memberData.secretIdentity));
+				/**
+				 * Otro problema es que estabas recorriendo todos los
+				 * atributos en el objeto data y solo hace hacer un 
+				 * for en el arreglo de los member, fijate muy bien que 
+				 * solo alli es donde hay que hacer un recorrido para
+				 * sacar la informacion de cada member.
+				 */
 
-					dataManager.heroes.push(heroe);
-					console.log(heroeData);
+				for (var key in squadData.members) {
+
+					/**
+					 * Una ves que sacas la informacion de un member
+					 * y lo parsear al objeto correcto, lo aregas a la
+					 * lista de los members del squad.
+					 * Recuerda que los nombres de las clases debe ser en 
+					 * singular.
+					 * Muy bien lo que hiciste en extraer los villanos y 
+					 * los heroes en una sola clase, por eso mismo hice la
+					 * clase squad.js
+					 */
+					var memberData = squadData.members[key];
+					var member = new Member(memberData.name, memberData.age, memberData.secretIdentity);
+					squad.members.push(member);
 				}
 
+				/**
+				 * Ahora si ves en console, puedes ver un squad que es lo
+				 * que se imprime en la linea 37, y el squad parsiado al 
+				 * objecto squad que corresponde a la linea 69.
+				 */
+				console.log(squad);
+
+				dataManager.heroesSquad = squad;
 				navManager.showHeroes();
 			}
 			else {
@@ -56,13 +85,20 @@ function init() {
 	}
 
 	function getVillainsCallback(e) {
+
+		/**
+		 * Mira que agregue un return para no continuar 
+		 * el flujo del programa aqui abajo, para evitar errores.
+		 */
+		return;
+
 		var request = e.target;
 		if (request.readyState === XMLHttpRequest.DONE) {
 			if (request.status === 200) {
-				
+
 				var data = JSON.parse(request.responseText);
 				console.log(data);
-				
+
 				for (var key in data) {
 					var villainData = data;
 					var memberData = villainData.members;
@@ -72,7 +108,7 @@ function init() {
 					var villain = new Villains(villainData.squadName, villainData.homeTown, villainData.formed, villainData.secretBase, villainData.active, new Members(memberData.name, memberData.age, memberData.secretIdentity));
 
 					dataManager.villains.push(villain);
-					console.log(memberData);
+					// console.log(memberData);
 				}
 
 				navManager.showVillains();

@@ -1,4 +1,4 @@
-class Members {
+class Member {
 
 	constructor(name, age, secretIdentity) {
 		this.name = name;

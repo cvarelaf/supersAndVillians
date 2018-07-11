@@ -1,4 +1,4 @@
-class Villains {
+class Squad {
 	constructor(squadName, homeTown, formed, secretBase, active) {
 		this.squadName = squadName;
 		this.homeTown = homeTown;
