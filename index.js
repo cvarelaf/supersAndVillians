@@ -72,7 +72,7 @@ function init() {
 					var villain = new Villains(villainData.squadName, villainData.homeTown, villainData.formed, villainData.secretBase, villainData.active, new Members(memberData.name, memberData.age, memberData.secretIdentity));
 
 					dataManager.villains.push(villain);
-					console.log(villain);
+					console.log(memberData);
 				}
 
 				navManager.showVillains();
