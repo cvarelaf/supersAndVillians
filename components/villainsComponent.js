@@ -2,7 +2,6 @@ class VillainsComponent extends Component{
 
     constructor(model,parent, dataManager){
         super(model, parent, dataManager);
-        this.container.className = 'villainsComponent';
 
         //Add all component elements
         this.title = document.createElement('h2');
@@ -28,24 +27,20 @@ class VillainsComponent extends Component{
         this.formed.innerHTML = 'Formed on: ' + this.model.formed;
         this.secretBase.innerHTML = 'Secret Base: ' + this.model.secretBase;
         this.active.innerHTML = 'Active: ' + this.model.active;
-        this.members.innerHTML = 'Members: ' + this.model.members.lenght;
+        this.members.innerHTML = 'Members: ' + this.model.members.length;
         
         this.membersBtn.innerHTML = 'MEMBERS';
 
         this.membersBtn.onclick = this.VillainMembersBtnClick.bind(this);
-        
-        this.container.villain = this.model;
+
     }
 
     VillainMembersBtnClick(e){
-        var villainsComponent = document.getElementById("villainsComponent");
-        var villainsInfoComponent = document.getElementById("villainsComponent").innerHTML = "Member Information!";
-        if( villainsInfoComponent.style.display == "none" ){
-            villainsComponent.style.display = "none";
-            villainsInfoComponent.style.display = "block";
-        }else{
-            villainsComponent.style.display = "block";
-            villainsInfoComponent.style.display = "none";
-        }
+        this.model.members.forEach(member => {
+            console.log(member);
+            var name = document.createElement('p');
+            name.innerHTML = member.name;
+            this.container.appendChild(name);
+        });
     }
 }
