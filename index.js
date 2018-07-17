@@ -25,7 +25,7 @@ function init() {
 				for (var key in squadData.members) {
 
 					var memberData = squadData.members[key];
-					var member = new Member(memberData.name, memberData.age, memberData.secretIdentity);
+					var member = new Member(memberData.name, memberData.age, memberData.secretIdentity, memberData.powers);
 					squad.members.push(member);
 				}
 
@@ -65,7 +65,7 @@ function init() {
 				for (var key in squadData.members) {
 
 					var memberData = squadData.members[key];
-					var member = new Member(memberData.name, memberData.age, memberData.secretIdentity);
+					var member = new Member(memberData.name, memberData.age, memberData.secretIdentity, memberData.powers);
 					squad.members.push(member);
 				}
 				console.log(squad);

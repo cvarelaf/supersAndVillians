@@ -6,7 +6,7 @@ class NavManager {
     }
 
     showVillains() {
-        var villainComponent = new VillainsComponent(this.dataManager.heroesSquad, this.villainsComponent, this.dataManager);
+        var villainComponent = new VillainsComponent(this.dataManager.villainsSquad, this.villainsComponent, this.dataManager);
     }
 
     showHeroes() {

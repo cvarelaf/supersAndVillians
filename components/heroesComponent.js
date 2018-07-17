@@ -47,8 +47,17 @@ class HeroesComponent extends Component {
         this.model.members.forEach(member => {
             console.log(member);
             var name = document.createElement('p');
-            name.innerHTML = member.name;
+            var age = document.createElement('p');
+            var secretIdentity = document.createElement('p');
+            var powers = document.createElement('p');
+            name.innerHTML = 'Name: ' + member.name;
+            age.innerHTML = 'Age: ' + member.age;
+            secretIdentity.innerHTML = 'Secret Identity: ' + member.secretIdentity;
+            powers.innerHTML = 'Powers: ' + member.powers;
             this.container.appendChild(name);
+            this.container.appendChild(age);
+            this.container.appendChild(secretIdentity);
+            this.container.appendChild(powers);
         });
     }
 }
