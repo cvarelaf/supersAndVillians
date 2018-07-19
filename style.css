@@ -19,7 +19,7 @@
 
     .heroesComponent{
         background-color: white;
-        width:350px;
+        width:30%;
         margin: auto;
         right: 0;
         left: 0;
@@ -31,7 +31,7 @@
 
     .villainsComponent{
         background-color: white;
-        width:350px;
+        width:30%;
         margin: auto;
         right: 0;
         left: 0;
