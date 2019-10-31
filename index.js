@@ -47,7 +47,7 @@ function init() {
 
 	function getHeroes() {
 		var request = new XMLHttpRequest();
-		request.open('GET', 'json/heroes.json', true);
+		request.open('GET', 'https://api.myjson.com/bins/889ok', true);
 		request.onreadystatechange = getHeroesCallback;
 		request.send();
 	}
